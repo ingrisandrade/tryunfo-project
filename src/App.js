@@ -8,6 +8,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
+} /* comentário */
 
 export default App;
