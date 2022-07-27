@@ -33,6 +33,7 @@ class Form extends Component {
           <option value="raro"> raro </option>
           <option value="muito raro"> muito raro </option>
         </select>
+        <input type="checkbox" name="" id="" data-testid="trunfo-input" />
       </div>
     );
   }
