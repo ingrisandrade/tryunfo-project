@@ -25,6 +25,9 @@ class Form extends Component {
         <label htmlFor="attr3-input">
           <input type="number" name="attr3-input" id="" data-testid="attr3-input" />
         </label>
+        <label htmlFor="image-input">
+          <input type="text" name="image-input" data-testid="image-input" />
+        </label>
       </div>
     );
   }
