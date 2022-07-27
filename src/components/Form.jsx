@@ -1,4 +1,4 @@
-import React, { Component0 } from 'react';
+import React, { Component } from 'react';
 
 class Form extends Component {
   render() {
