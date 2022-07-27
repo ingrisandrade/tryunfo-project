@@ -28,6 +28,11 @@ class Form extends Component {
         <label htmlFor="image-input">
           <input type="text" name="image-input" data-testid="image-input" />
         </label>
+        <select name="" id="" data-testid="rare-input">
+          <option value="normal"> normal </option>
+          <option value="raro"> raro </option>
+          <option value="muito raro"> muito raro </option>
+        </select>
       </div>
     );
   }
