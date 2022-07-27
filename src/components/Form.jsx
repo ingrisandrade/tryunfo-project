@@ -16,6 +16,15 @@ class Form extends Component {
             data-testid="description-input"
           />
         </label>
+        <label htmlFor="attr1-input">
+          <input type="number" name="attr1-input" id="" data-testid="attr1-input" />
+        </label>
+        <label htmlFor="attr2-input">
+          <input type="number" name="attr2-input" id="" data-testid="attr2-input" />
+        </label>
+        <label htmlFor="attr3-input">
+          <input type="number" name="attr3-input" id="" data-testid="attr3-input" />
+        </label>
       </div>
     );
   }
