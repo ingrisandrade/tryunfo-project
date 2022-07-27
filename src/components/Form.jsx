@@ -36,7 +36,7 @@ class Form extends Component {
         <label htmlFor="super-tryunfo">
           <input type="checkbox" name="super-tryunfo" id="" data-testid="trunfo-input" />
         </label>
-
+        <button type="submit" data-testid="save-button">Salvar</button>
       </div>
     );
   }
