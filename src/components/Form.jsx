@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick
+    } = this.props;
     return (
       <div>
         <label htmlFor="name-input">
@@ -41,5 +56,20 @@ class Form extends Component {
     );
   }
 }
+
+form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.boolean.isRequired,
+  hasTrunfo: PropTypes.boolean.isRequired,
+  isSaveButtonDisabled: PropTypes.boolean.isRequired,
+  onInputChange: PropTypes.callback.isRequired,
+  onSaveButtonClick: PropTypes.callback.isRequired,
+};
 
 export default Form;
