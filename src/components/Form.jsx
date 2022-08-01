@@ -13,7 +13,9 @@ class Form extends Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo, /* Não foi pedido no requisito */
-      // isSaveButtonDisabled,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
     } = this.props;
     return (
       <section>
