@@ -12,7 +12,7 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: 'false', /* boolean */
     // hasTrunfo, /* boolean */
-    isSaveButtonDisabled: '', /* boolean */
+    // isSaveButtonDisabled: '', /* boolean */
   }
 
   onInputChange = () => {
@@ -34,7 +34,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo, /* Não foi pedido no requisito */
-      isSaveButtonDisabled,
+      // isSaveButtonDisabled,
     } = this.state;
 
     return (
