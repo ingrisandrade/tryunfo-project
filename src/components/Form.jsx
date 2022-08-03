@@ -13,9 +13,9 @@ class Form extends Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo, /* Não foi pedido no requisito */
-      isSaveButtonDisabled,
+      // isSaveButtonDisabled,
       onInputChange,
-      onSaveButtonClick,
+      // onSaveButtonClick,
     } = this.props;
     return (
       <section>
@@ -26,7 +26,7 @@ class Form extends Component {
             <input
               type="text"
               data-testid="name-input"
-              name="name-input"
+              name="cardName"
               id="name-input"
               placeholder="Digite o nome da carta"
               value={ cardName }
@@ -39,7 +39,7 @@ class Form extends Component {
             Descrição
             <br />
             <textarea
-              name="description-input"
+              name="cardDescription"
               id=""
               cols="30"
               rows="10"
@@ -53,7 +53,7 @@ class Form extends Component {
             Attr01
             <input
               type="number"
-              name="attr1-input"
+              name="cardAttr1"
               id=""
               data-testid="attr1-input"
               value={ cardAttr1 }
@@ -65,7 +65,7 @@ class Form extends Component {
             Attr02
             <input
               type="number"
-              name="attr2-input"
+              name="cardAttr2"
               id=""
               data-testid="attr2-input"
               value={ cardAttr2 }
@@ -77,7 +77,7 @@ class Form extends Component {
             Attr03
             <input
               type="number"
-              name="attr3-input"
+              name="cardAttr3"
               id=""
               data-testid="attr3-input"
               value={ cardAttr3 }
@@ -90,7 +90,7 @@ class Form extends Component {
             Imagem
             <input
               type="text"
-              name="image-input"
+              name="cardImage"
               data-testid="image-input"
               value={ cardImage }
               onChange={ onInputChange }
@@ -100,7 +100,7 @@ class Form extends Component {
           <br />
           Raridade
           <select
-            name=""
+            name="cardRare"
             id=""
             data-testid="rare-input"
             value={ cardRare }
@@ -115,7 +115,7 @@ class Form extends Component {
           <label htmlFor="trunfo-input">
             <input
               type="checkbox"
-              name="trunfo-input"
+              name="cardTrunfo"
               id="trunfo-input"
               data-testid="trunfo-input"
               checked={ cardTrunfo }
@@ -128,8 +128,8 @@ class Form extends Component {
           <button
             type="submit"
             data-testid="save-button"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
+            // disabled={ isSaveButtonDisabled }
+            // onClick={ onSaveButtonClick }
           >
             Salvar
           </button>
