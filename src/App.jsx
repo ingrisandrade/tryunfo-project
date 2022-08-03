@@ -20,43 +20,6 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [target.name]: value,
-    },
-    () => {
-      this.validateForm();
-    });
-  }
-
-  validateForm = () => {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-    } = this.state;
-
-    const valueAttr = 210;
-    const attrValue = 90;
-
-    const validAll = [
-      cardName.length > 0,
-      cardDescription.length > 0,
-      cardImage.length > 0,
-      cardRare.length > 0,
-      parseInt(cardAttr1, 10) <= attrValue,
-      parseInt(cardAttr2, 10) <= attrValue,
-      parseInt(cardAttr3, 10) <= attrValue,
-      parseInt(cardAttr1, 10)
-      + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10) <= valueAttr,
-      parseInt(cardAttr1, 10) >= 0,
-      parseInt(cardAttr2, 10) >= 0,
-      parseInt(cardAttr3, 10) >= 0,
-    ].every(Boolean);
-
-    this.setState({
-      isSaveButtonDisabled: !validAll,
     });
   }
 
