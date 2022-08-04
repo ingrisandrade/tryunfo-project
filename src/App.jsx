@@ -11,7 +11,7 @@ class App extends React.Component {
     cardAttr3: '',
     cardImage: '',
     cardRare: '',
-    cardTrunfo: 'false', /* boolean */
+    cardTrunfo: '', /* boolean */
     // hasTrunfo, /* boolean */
     isSaveButtonDisabled: 'true', /* boolean */
   }
