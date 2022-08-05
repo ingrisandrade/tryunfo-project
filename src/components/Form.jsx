@@ -13,9 +13,9 @@ class Form extends Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo, /* Não foi pedido no requisito */
-      // isSaveButtonDisabled,
+      isSaveButtonDisabled,
       onInputChange,
-      // onSaveButtonClick,
+      onSaveButtonClick,
     } = this.props;
     return (
       <section>
@@ -128,8 +128,8 @@ class Form extends Component {
           <button
             type="submit"
             data-testid="save-button"
-            // disabled={ isSaveButtonDisabled }
-            // onClick={ onSaveButtonClick }
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
           >
             Salvar
           </button>

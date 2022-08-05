@@ -23,7 +23,9 @@ class App extends React.Component {
     });
   }
 
-  onSaveButtonClick = () => { };
+  onSaveButtonClick = () => {
+    console.log('Ainda não implementado');
+  };
 
   render() {
     const {
