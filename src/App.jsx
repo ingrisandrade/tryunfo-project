@@ -20,12 +20,21 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [target.name]: value,
+    }, () => {
+      this.validateInputForm();
     });
-    this.validateInputForm();
   }
 
   validateInputForm = () => {
-
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
   }
 
   onSaveButtonClick = () => {
