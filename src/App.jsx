@@ -23,6 +23,10 @@ class App extends React.Component {
     });
   }
 
+  validateInputForm = () => {
+
+  }
+
   onSaveButtonClick = () => {
     console.log('Ainda não implementado');
   };
