@@ -11,9 +11,10 @@ class App extends React.Component {
     cardAttr3: '',
     cardImage: '',
     cardRare: '',
-    cardTrunfo: '', /* boolean */
-    // hasTrunfo, /* boolean */
-    isSaveButtonDisabled: 'true', /* boolean */
+    cardTrunfo: false,
+    hasTrunfo: false,
+    isSaveButtonDisabled: true,
+    saveCards: [],
   };
 
   handleButtonDisabled = () => {
@@ -63,9 +64,27 @@ class App extends React.Component {
     });
   }
 
-  onSaveButtonClick = () => {
-    console.log('Ainda não implementado');
+  trunfoCard = () => {
+    const { saveCards } = this.state;
+    const hasTrunfo = saveCards.some(({ cardTrunfo }) => cardTrunfo);
+    this.setState({ hasTrunfo });
   };
+
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
+    this.setState((currentState) => ({
+      saveCards: [...currentState.saveCards, currentState],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    }), this.trunfoCard);
+  }
 
   render() {
     const {
@@ -77,7 +96,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo, /* Não foi pedido no requisito */
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -94,6 +113,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ (this.onSaveButtonClick) }
