@@ -21,6 +21,7 @@ class App extends React.Component {
     this.setState({
       [target.name]: value,
     });
+    this.validateInputForm();
   }
 
   validateInputForm = () => {
