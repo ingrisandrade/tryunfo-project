@@ -159,10 +159,10 @@ class App extends React.Component {
               />
               <button
                 type="button"
+                data-testid="delete-button"
                 onClick={ () => {
                   this.deleteCard(index);
                 } }
-                data-testid="delete-button"
               >
                 Excluir
               </button>
