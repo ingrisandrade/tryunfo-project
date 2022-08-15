@@ -88,14 +88,14 @@ class App extends React.Component {
 
   deleteCard(key) {
     const {
-      saveCards
+      saveCards,
     } = this.state;
     this.setState(
-    {
-      saveCards: saveCards.filter((card, index) => index !== key)
-    }, () => {
-      this.trunfoCard();
-    },
+      {
+        saveCards: saveCards.filter((card, index) => index !== key),
+      }, () => {
+        this.trunfoCard();
+      },
     );
   }
 
