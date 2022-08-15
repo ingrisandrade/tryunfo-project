@@ -143,8 +143,7 @@ class App extends React.Component {
               cardRare={ item.cardRare }
               cardTrunfo={ item.cardTrunfo }
             />
-          ))
-          }
+          ))}
         </section>
       </main>
     );
