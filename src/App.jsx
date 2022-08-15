@@ -86,6 +86,19 @@ class App extends React.Component {
     }), this.trunfoCard);
   }
 
+  deleteCard(key) {
+    const {
+      saveCards
+    } = this.state;
+    this.setState(
+    {
+      saveCards: saveCards.filter((card, index) => index !== key)
+    }, () => {
+      this.trunfoCard();
+    },
+    );
+  }
+
   render() {
     const {
       cardName,
@@ -132,17 +145,24 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
           { saveCards.length > 0 && saveCards.map((item, index) => (
-            <Card
-              key={ index }
-              cardName={ item.cardName }
-              cardDescription={ item.cardDescription }
-              cardAttr1={ item.cardAttr1 }
-              cardAttr2={ item.cardAttr2 }
-              cardAttr3={ item.cardAttr3 }
-              cardImage={ item.cardImage }
-              cardRare={ item.cardRare }
-              cardTrunfo={ item.cardTrunfo }
-            />
+            <div key={ index }>
+              <Card
+                key={ index }
+                cardName={ item.cardName }
+                cardDescription={ item.cardDescription }
+                cardAttr1={ item.cardAttr1 }
+                cardAttr2={ item.cardAttr2 }
+                cardAttr3={ item.cardAttr3 }
+                cardImage={ item.cardImage }
+                cardRare={ item.cardRare }
+                cardTrunfo={ item.cardTrunfo }
+              />
+              <button
+                data-testid="delete-button"
+              >
+                Excluir
+              </button>
+            </div>
           ))}
         </section>
       </main>
