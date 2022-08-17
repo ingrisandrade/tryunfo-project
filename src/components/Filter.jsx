@@ -38,7 +38,7 @@ class Filter extends Component {
 }
 
 Filter.propTypes = {
-  filterByName: PropTypes.func,
+  filterName: PropTypes.func,
 }.isRequired;
 
 export default Filter;
