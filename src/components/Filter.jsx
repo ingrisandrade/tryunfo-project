@@ -19,6 +19,19 @@ class Filter extends Component {
             disabled={ disabled }
           />
         </label>
+
+        <select
+          name="filter-rarity"
+          id="filter-rarity"
+          data-testid="rare-filter"
+          disabled={ disabled }
+          onChange={ filterRarity }
+        >
+          <option value="todas">Todas</option>
+          <option value="normal">Normal</option>
+          <option value="raro">Raro</option>
+          <option value="muito raro">Muito Raro</option>
+        </select>
       </div>
     );
   }
