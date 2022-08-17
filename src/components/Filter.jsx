@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Filter extends Component {
   render() {
-    const { filterByName } = this.props;
+    const { filterName, filterRarity, filterSuperTrunfo, disabled } = this.props;
 
     return (
       <div>
@@ -11,10 +11,12 @@ class Filter extends Component {
           Lista de Cartas Filtradas
           <input
             type="text"
-            name="filter "
+            name="filter-name"
             id="filter-name"
             placeholder="Digite o nome da carta"
             data-testid="name-filter"
+            onChange={ filterName }
+            disabled={ disabled }
           />
         </label>
       </div>
