@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   state = {
@@ -169,6 +170,8 @@ class App extends React.Component {
             </div>
           ))}
         </section>
+
+        <Filter />
       </main>
     );
   }
