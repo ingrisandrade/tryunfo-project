@@ -16,6 +16,8 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     saveCards: [],
+    filteredCard: [],
+    filter: '',
   };
 
   handleButtonDisabled = () => {
@@ -100,6 +102,28 @@ class App extends React.Component {
     );
   }
 
+  filterByName ({ target }) {
+    const {
+      name,
+      value,
+    } = target;
+
+    const {
+      saveCards,
+      filter,
+    } = this.state;
+
+    this.setState({
+      [name]: value,
+    }, () => {
+      let filteredCard = saveCards.filter((card) => card.cardName.includes(filter));
+      if (value === '') {
+        filteredCard = saveCards;
+      }
+      this.setState({ filteredCard });
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -113,6 +137,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       saveCards,
+      filteredCard
     } = this.state;
 
     return (
