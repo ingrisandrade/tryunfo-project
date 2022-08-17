@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
   render() {
+    const { filterByName } = this.props;
+
     return (
       <div>
         <label htmlFor="filter-name">
@@ -18,5 +21,9 @@ class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  filterByName: PropTypes.func,
+}.isRequired;
 
 export default Filter;
