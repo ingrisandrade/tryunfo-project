@@ -7,6 +7,7 @@ class Filter extends Component {
 
     return (
       <div>
+        <h2>Filtros de carta:</h2>
         <label htmlFor="filter-name">
           Lista de Cartas Filtradas
           <input
@@ -32,6 +33,17 @@ class Filter extends Component {
           <option value="raro">Raro</option>
           <option value="muito raro">Muito Raro</option>
         </select>
+
+        <label htmlFor="trunfo-filter">
+          <input
+            type="checkbox"
+            name="trunfo-filter"
+            id="trunfo-filter"
+            data-testid="trunfo-filter"
+            onChange={ filterSuperTrunfo }
+          />
+          Super Trunfo
+        </label>
       </div>
     );
   }
@@ -39,6 +51,9 @@ class Filter extends Component {
 
 Filter.propTypes = {
   filterName: PropTypes.func,
+  filterRarity: PropTypes.func,
+  filterSuperTrunfo: PropTypes.func,
+  disabled: PropTypes.bool,
 }.isRequired;
 
 export default Filter;
