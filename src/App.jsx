@@ -132,7 +132,9 @@ class App extends React.Component {
     if (target.value === 'todas') return this.setState({ filterRarity: '' });
     if (target.value === 'normal') return this.setState({ filterRarity: 'normal' });
     if (target.value === 'raro') return this.setState({ filterRarity: 'raro' });
-    if (target.value === 'muito raro') return this.setState({ filterRarity: 'muito raro' });
+    if (target.value === 'muito raro') {
+      return this.setState({ filterRarity: 'muito raro' });
+    }
   }
 
   filterName = ({ target }) => {
