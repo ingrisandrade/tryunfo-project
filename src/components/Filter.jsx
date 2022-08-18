@@ -30,8 +30,8 @@
 //         </label>
 
 //         <select
-//           name="filter-rarity"
-//           id="filter-rarity"
+//           name="filterRarity"
+//           id="filterRarity"
 //           data-testid="rare-filter"
 //           disabled={ disabled }
 //           onChange={ onFilterRarity }

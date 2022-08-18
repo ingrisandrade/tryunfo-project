@@ -18,6 +18,7 @@ class App extends React.Component {
     saveCards: [],
     filterCards: [],
     filterName: '',
+    filterRarity: '',
     disabled: false,
   };
 
@@ -127,19 +128,12 @@ class App extends React.Component {
     );
   };
 
-  // filterRarity = ({ target }) => {
-  //   const { saveCards } = this.state;
-  //   const { value } = target;
-
-  //   if (value === 'all') {
-  //     this.setState({
-  //       filterCards: saveCards,
-  //     });
-  //   } else {
-  //     const filterCards = saveCards.filter((card) => card.cardRare === value);
-  //     this.setState({ filterCards });
-  //   }
-  // };
+  filterRarity = ({ target }) => {
+    if (target.value === 'todas') return this.setState({ filterRarity: '' });
+    if (target.value === 'normal') return this.setState({ filterRarity: 'normal' });
+    if (target.value === 'raro') return this.setState({ filterRarity: 'raro' });
+    if (target.value === 'muito raro') return this.setState({ filterRarity: 'muito raro' });
+  }
 
   filterName = ({ target }) => {
     // const { filterCards, filterName } = this.state;
@@ -165,7 +159,7 @@ class App extends React.Component {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
       cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      saveCards, filterName, disabled,
+      saveCards, filterName, disabled, filterRarity,
     } = this.state;
 
     return (
@@ -187,6 +181,7 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
             filterName={ this.filterName }
             disabled={ disabled }
+            filterRarity={ this.filterRarity }
           />
 
           <Card
@@ -211,6 +206,7 @@ class App extends React.Component {
           <section>
             <h3>Salvar Cartas</h3>
             {saveCards
+              .filter((card) => card.cardRare.startsWith(filterRarity))
               .filter((card) => card.cardName.includes(filterName)).map((card, index) => (
                 <div key={ index }>
                   <Card
@@ -240,5 +236,7 @@ class App extends React.Component {
     );
   }
 }
+
+// Requisito 10 e 11 feito com ajuda de Pedro H. Niemczewski
 
 export default App;

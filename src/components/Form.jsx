@@ -18,6 +18,7 @@ class Form extends Component {
       onSaveButtonClick,
       filterName,
       disabled,
+      filterRarity,
     } = this.props;
     return (
       <section>
@@ -152,6 +153,20 @@ class Form extends Component {
               disabled={ disabled }
             />
           </label>
+
+          <select
+            name="filterRarity"
+            id="filterRarity"
+            data-testid="rare-filter"
+            disabled={ disabled }
+            onChange={ filterRarity }
+          >
+            <option value="todas">Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
+          </select>
+
         </form>
       </section>
     );
@@ -171,6 +186,8 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
+  filterName: PropTypes.func,
+  filterRarity: PropTypes.func,
 }.isRequired;
 
 export default Form;
