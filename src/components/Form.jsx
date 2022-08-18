@@ -16,6 +16,8 @@ class Form extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      filterName,
+      disabled,
     } = this.props;
     return (
       <section>
@@ -135,6 +137,21 @@ class Form extends Component {
           >
             Salvar
           </button>
+
+          <h2>Filtros de carta:</h2>
+
+          <label htmlFor="filterName">
+            Lista de Cartas Filtradas
+            <input
+              type="text"
+              name="filterName"
+              id="filterName"
+              placeholder="Digite o nome da carta"
+              data-testid="name-filter"
+              onChange={ filterName }
+              disabled={ disabled }
+            />
+          </label>
         </form>
       </section>
     );

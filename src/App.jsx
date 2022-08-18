@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-import Filter from './components/Filter';
+// import Filter from './components/Filter';
 
 class App extends React.Component {
   state = {
@@ -17,17 +17,14 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     saveCards: [],
     filterCards: [],
-    filterDisable: false,
+    filterName: '',
+    disabled: false,
   };
 
   handleButtonDisabled = () => {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
+      cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage,
     } = this.state;
 
     const numAttr1 = Number(cardAttr1);
@@ -67,84 +64,19 @@ class App extends React.Component {
     });
   }
 
-  trunfoCard = () => {
-    const { saveCards } = this.state;
-    const hasTrunfo = saveCards.some(({ cardTrunfo }) => cardTrunfo);
-    this.setState({ hasTrunfo });
-  };
-
   onSaveButtonClick = (e) => {
     e.preventDefault();
-    this.setState((currentState) => ({
-      saveCards: [...currentState.saveCards, currentState],
-      filterCards: [...currentState.filterCards, currentState],
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    }), this.trunfoCard);
-  }
 
-  filterRarity = ({ target }) => {
+    const {
+      cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+    } = this.state;
+
     const {
       saveCards,
     } = this.state;
-    const { value } = target;
 
-    if (value === 'all') {
-      this.setState ({
-        filterCards: saveCards,
-      });
-    } else {
-      const filterCards = saveCards.filter((card) => card.rarity === value);
-      this.setState({ filterCards: filterName });
-    }
-  };
-
-  filterName = ({ target }) => {
-    const { value } = target;
-    const { filterCards } = this.state;
-    if (value === '') {
-      this.setState({
-        filterCards,
-      });
-    } else {
-      const filterName = filterCards.filter((card) => card.name.includes(value));
-      this.setState({ filterCards: filterName });
-    }
-  };
-
-  filterSuperTrunfo = ({ target }) => {
-    const { filterCards } = this.state;
-    const filterTrunfo2 = filterCards.filter((card) => card.trunfo);
-    const value = target.checked;
-    this.setState({
-      filterCards: filterTrunfo2,
-      filterDisable: value,
-    });
-  };
-
-  deleteCard(key) {
-    const {
-      saveCards, filterCards,
-    } = this.state;
-    this.setState(
-      {
-        saveCards: saveCards.filter((card, index) => index !== key),
-        filterCards: filterCards.filter((card, index) => index !== key),
-      }, () => {
-        this.trunfoCard();
-      },
-    );
-  }
-
-  render() {
-    const {
+    const card = {
       cardName,
       cardDescription,
       cardAttr1,
@@ -153,11 +85,87 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      // saveCards,
-      filterCards,
-      filterDisable,
+    };
+
+    this.setState(
+      {
+        saveCards: [...saveCards, card],
+      }, () => {
+        this.setState({
+          cardName: '',
+          cardDescription: '',
+          cardAttr1: '0',
+          cardAttr2: '0',
+          cardAttr3: '0',
+          cardImage: '',
+          cardRare: 'normal',
+          cardTrunfo: false,
+          isSaveButtonDisabled: true,
+        });
+        this.hasTrunfo();
+      },
+    );
+  };
+
+  hasTrunfo = () => {
+    const { saveCards } = this.state;
+    const hasTrunfo = saveCards.some((card) => card.cardTrunfo);
+    this.setState({ hasTrunfo });
+  };
+
+  deleteCard = (key) => {
+    const {
+      saveCards, filterCards,
+    } = this.state;
+    this.setState(
+      {
+        saveCards: saveCards.filter((card, index) => index !== key),
+        filterCards: filterCards.filter((card, index) => index !== key),
+      }, () => {
+        this.hasTrunfo();
+      },
+    );
+  };
+
+  // filterRarity = ({ target }) => {
+  //   const { saveCards } = this.state;
+  //   const { value } = target;
+
+  //   if (value === 'all') {
+  //     this.setState({
+  //       filterCards: saveCards,
+  //     });
+  //   } else {
+  //     const filterCards = saveCards.filter((card) => card.cardRare === value);
+  //     this.setState({ filterCards });
+  //   }
+  // };
+
+  filterName = ({ target }) => {
+    // const { filterCards, filterName } = this.state;
+    this.setState({
+      filterName: target.value,
+    });
+    // const CardsNames = filterCards.filter((card) => card.cardName.includes(filterName));
+    // this.setState({ filterCards: CardsNames });
+  }
+
+  // filterSuperTrunfo = ({ target }) => {
+  //   const { filterCards } = this.state;
+  //   const filterTrunfo = filterCards.filter((card) => card.cardTrunfo);
+  //   const value = target.checked;
+  //   this.setState({
+  //     filterCards: filterTrunfo,
+  //     filterDisable: value,
+  //   });
+  // };
+
+  render() {
+    const {
+      cardName, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      saveCards, filterName, disabled,
     } = this.state;
 
     return (
@@ -176,7 +184,9 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
-            onSaveButtonClick={ (this.onSaveButtonClick) }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            filterName={ this.filterName }
+            disabled={ disabled }
           />
 
           <Card
@@ -190,39 +200,40 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
 
-          <Filter
+          {/* <Filter
             onfilterRarity={ this.filterRarity }
             onfilterName={ this.filterName }
             onfilterTrunfo={ this.filterSuperTrunfo }
             disabled={ filterDisable }
-          />
+            filterCards={ filterCards }
+          /> */}
 
           <section>
             <h3>Salvar Cartas</h3>
-            { filterCards.map((item, index) => (
-              <div key={ index }>
-                <Card
-                  key={ index }
-                  cardName={ item.cardName }
-                  cardDescription={ item.cardDescription }
-                  cardAttr1={ item.cardAttr1 }
-                  cardAttr2={ item.cardAttr2 }
-                  cardAttr3={ item.cardAttr3 }
-                  cardImage={ item.cardImage }
-                  cardRare={ item.cardRare }
-                  cardTrunfo={ item.cardTrunfo }
-                />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ () => {
-                    this.deleteCard(index);
-                  } }
-                >
-                  Excluir
-                </button>
-              </div>
-            ))}
+            {saveCards
+              .filter((card) => card.cardName.includes(filterName)).map((card, index) => (
+                <div key={ index }>
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    onClick={ () => {
+                      this.deleteCard(index);
+                    } }
+                  >
+                    Excluir
+                  </button>
+                </div>
+              ))}
           </section>
         </section>
       </main>
